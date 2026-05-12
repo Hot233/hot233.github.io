@@ -389,5 +389,37 @@ L2Dwidget.init({
 });
 </script>
 
+<!-- Click Heart Effect -->
+<style>
+.heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  animation: heartFade 1.5s ease-out forwards;
+  font-size: 24px;
+  user-select: none;
+}
+@keyframes heartFade {
+  0%   { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+  50%  { opacity: 0.8; transform: translateY(-60px) scale(1.3) rotate(15deg); }
+  100% { opacity: 0; transform: translateY(-120px) scale(0.5) rotate(-15deg); }
+}
+</style>
+<script>
+(function() {
+  var colors = ['#ff4d6d','#ff6b81','#ff7979','#e84393','#fd79a8','#ff4757','#ff6348'];
+  document.addEventListener('click', function(e) {
+    var heart = document.createElement('span');
+    heart.className = 'heart';
+    heart.innerHTML = '\u{2764}';
+    heart.style.left = (e.clientX - 12) + 'px';
+    heart.style.top = (e.clientY - 12) + 'px';
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+    document.body.appendChild(heart);
+    setTimeout(function(){ heart.remove(); }, 1500);
+  });
+})();
+</script>
+
 </body>
 </html>
