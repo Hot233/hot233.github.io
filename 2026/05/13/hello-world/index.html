@@ -209,36 +209,6 @@
   <div class="cc-license animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
-<!-- QQ Music Player -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<div id="aplayer" style="margin: 0 -18px;"></div>
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script>
-fetch('https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9711840334')
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
-    new APlayer({
-      container: document.getElementById('aplayer'),
-      fixed: false,
-      mini: false,
-      autoplay: false,
-      volume: 0.5,
-      order: 'random',
-      audio: data.map(function(song) {
-        return {
-          name: song.title,
-          artist: song.author,
-          url: song.url,
-          cover: song.pic,
-          lrc: song.lrc
-        };
-      })
-    });
-  })
-  .catch(function(err) {
-    console.log('Music player load failed:', err);
-  });
-</script>
 
         </div>
       </div>
@@ -522,6 +492,43 @@ L2Dwidget.init({
     setTimeout(function(){ heart.remove(); }, 1500);
   });
 })();
+</script>
+
+<!-- QQ Music Player (bottom-left) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<style>
+.aplayer.aplayer-fixed.aplayer-mini {
+  left: 20px !important;
+  right: auto !important;
+}
+</style>
+<div id="aplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script>
+fetch('https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9711840334')
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      mini: true,
+      autoplay: false,
+      volume: 0.5,
+      order: 'random',
+      audio: data.map(function(song) {
+        return {
+          name: song.title,
+          artist: song.author,
+          url: song.url,
+          cover: song.pic,
+          lrc: song.lrc
+        };
+      })
+    });
+  })
+  .catch(function(err) {
+    console.log('Music player load failed:', err);
+  });
 </script>
 
 </body>
