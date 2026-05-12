@@ -380,19 +380,34 @@ L2Dwidget.init({
 
 <!-- QQ Music Player -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<div id="player" class="aplayer"
-     data-id="9711840334"
-     data-server="tencent"
-     data-type="playlist"
-     data-fixed="true"
-     data-mini="true"
-     data-autoplay="false"
-     data-order="random"
-     data-preload="auto"
-     data-volume="0.5">
-</div>
+<div id="aplayer"></div>
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script>
+fetch('https://api.i-meto.com/meting/api?server=tencent&type=playlist&id=9711840334')
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      mini: true,
+      autoplay: false,
+      volume: 0.5,
+      order: 'random',
+      audio: data.map(function(song) {
+        return {
+          name: song.title,
+          artist: song.author,
+          url: song.url,
+          cover: song.pic,
+          lrc: song.lrc
+        };
+      })
+    });
+  })
+  .catch(function(err) {
+    console.log('Music player load failed:', err);
+  });
+</script>
 
 </body>
 </html>
