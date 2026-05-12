@@ -13,12 +13,15 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Noto+Serif+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fira+Code:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hot233.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hot233.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"language":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="技术博客，记录学习与成长">
 <meta property="og:type" content="website">
@@ -48,17 +51,26 @@
 
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+  <script src="/js/third-party/pace.js" defer></script>
+
 
   
-
-
-
-
-
-
-  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -95,6 +107,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -103,11 +116,37 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -162,6 +201,9 @@
         <a href="https://github.com/Hot233" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Hot233" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
 
         </div>
       </div>
@@ -201,7 +243,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/05/13/5.9%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">5.9笔记</a>
+          <a href="/2026/05/13/5.9%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">5.9 笔记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -235,9 +277,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="5-9笔记"><a href="#5-9笔记" class="headerlink" title="5.9笔记"></a>5.9笔记</h1><p>假设以农大为例子的话，我首先的想法是从官网上找到domain:fafu.edu.cn</p>
-<p>之后使用subfinder快速枚举主流媒体中的子域名</p>
-<p><img src="/images/c91f96be3b3af57fa6046b97918af493.png" alt="img"></p>
+          <h1 id="5-9笔记"><a href="#5-9笔记" class="headerlink" title="5.9笔记"></a>5.9 笔记</h1><p>假设以农大为例子的话，我首先的想法是从官网上找到 domain:fafu.edu.cn</p>
+<p>之后使用 subfinder 快速枚举主流媒体中的子域名</p>
+<p><img data-src="/images/c91f96be3b3af57fa6046b97918af493.png" alt="img"></p>
 <p><a target="_blank" rel="noopener" href="https://git.fafu.edu.cn/">git.fafu.edu.cn</a>（代码仓库）</p>
 <p><a target="_blank" rel="noopener" href="https://webvpn.fafu.edu.cn/">webvpn.fafu.edu.cn</a>（VPN，内网入口）</p>
 <p><a target="_blank" rel="noopener" href="https://vpn.fafu.edu.cn/">vpn.fafu.edu.cn</a>（VPN）</p>
@@ -248,7 +290,7 @@
 <p><a target="_blank" rel="noopener" href="https://jwgl.fafu.edu.cn/">jwgl.fafu.edu.cn</a>（教务管理）</p>
 <p><a target="_blank" rel="noopener" href="https://stu.fafu.edu.cn/">stu.fafu.edu.cn</a>（学生系统）</p>
 <p><a target="_blank" rel="noopener" href="https://mail.fafu.edu.cn/">mail.fafu.edu.cn</a>（邮件系统）</p>
-<p><a target="_blank" rel="noopener" href="https://oa.fafu.edu.cn/">oa.fafu.edu.cn</a> &#x2F; <a target="_blank" rel="noopener" href="https://oanew.fafu.edu.cn/">oanew.fafu.edu.cn</a>（OA 办公）</p>
+<p><a target="_blank" rel="noopener" href="https://oa.fafu.edu.cn/">oa.fafu.edu.cn</a> / <a target="_blank" rel="noopener" href="https://oanew.fafu.edu.cn/">oanew.fafu.edu.cn</a>（OA 办公）</p>
 <p><a target="_blank" rel="noopener" href="https://lib.fafu.edu.cn/">lib.fafu.edu.cn</a>（图书馆系统）</p>
 <p><a target="_blank" rel="noopener" href="https://service.fafu.edu.cn/">service.fafu.edu.cn</a></p>
 <p><a target="_blank" rel="noopener" href="https://my.fafu.edu.cn/">my.fafu.edu.cn</a></p>
@@ -260,12 +302,12 @@
 <p><a target="_blank" rel="noopener" href="https://teacher.fafu.edu.cn/">teacher.fafu.edu.cn</a>（教师系统）</p>
 <p><a target="_blank" rel="noopener" href="https://teachers.fafu.edu.cn/">teachers.fafu.edu.cn</a></p>
 <p><a target="_blank" rel="noopener" href="https://rcgl.fafu.edu.cn/">rcgl.fafu.edu.cn</a>（人事管理）</p>
-<p><a target="_blank" rel="noopener" href="https://jcc.fafu.edu.cn/">jcc.fafu.edu.cn</a>（监测 &#x2F; 控制类）</p>
+<p><a target="_blank" rel="noopener" href="https://jcc.fafu.edu.cn/">jcc.fafu.edu.cn</a>（监测 / 控制类）</p>
 <p><a target="_blank" rel="noopener" href="https://k8s.fafu.edu.cn/">k8s.fafu.edu.cn</a>（容器平台）</p>
-<p><a target="_blank" rel="noopener" href="https://db1.fafu.edu.cn/">db1.fafu.edu.cn</a> &#x2F; <a target="_blank" rel="noopener" href="https://db2.fafu.edu.cn/">db2.fafu.edu.cn</a>（数据库）</p>
-<p><a target="_blank" rel="noopener" href="https://mysql.fafu.edu.cn/">mysql.fafu.edu.cn</a> &#x2F; <a target="_blank" rel="noopener" href="https://mssql.fafu.edu.cn/">mssql.fafu.edu.cn</a></p>
+<p><a target="_blank" rel="noopener" href="https://db1.fafu.edu.cn/">db1.fafu.edu.cn</a> / <a target="_blank" rel="noopener" href="https://db2.fafu.edu.cn/">db2.fafu.edu.cn</a>（数据库）</p>
+<p><a target="_blank" rel="noopener" href="https://mysql.fafu.edu.cn/">mysql.fafu.edu.cn</a> / <a target="_blank" rel="noopener" href="https://mssql.fafu.edu.cn/">mssql.fafu.edu.cn</a></p>
 <p><a target="_blank" rel="noopener" href="https://app.fafu.edu.cn/">app.fafu.edu.cn</a>（API 接口多）</p>
-<p><a target="_blank" rel="noopener" href="https://api8.fafu.edu.cn/">api8.fafu.edu.cn</a> &#x2F; <a target="_blank" rel="noopener" href="https://apis.fafu.edu.cn/">apis.fafu.edu.cn</a></p>
+<p><a target="_blank" rel="noopener" href="https://api8.fafu.edu.cn/">api8.fafu.edu.cn</a> / <a target="_blank" rel="noopener" href="https://apis.fafu.edu.cn/">apis.fafu.edu.cn</a></p>
 <p><a target="_blank" rel="noopener" href="https://down.fafu.edu.cn/">down.fafu.edu.cn</a>（下载站，常放备份）</p>
 <p><a target="_blank" rel="noopener" href="https://cwc.fafu.edu.cn/">cwc.fafu.edu.cn</a>（财务处）</p>
 <p><a target="_blank" rel="noopener" href="https://beta.fafu.edu.cn/">beta.fafu.edu.cn</a></p>
@@ -293,73 +335,73 @@
 <p><a target="_blank" rel="noopener" href="https://zzb.fafu.edu.cn/">zzb.fafu.edu.cn</a>（组织部）</p>
 <p><a target="_blank" rel="noopener" href="https://xwcb.fafu.edu.cn/">xwcb.fafu.edu.cn</a>（宣传部）<br>筛选一些可能存在敏感信息的网站，可以对以上网站进行更进一步的发掘</p>
 <hr>
-<p>用dnsx查存活子域的ip地址</p>
-<p><img src="/images/image-20260510205936842.png" alt="image-20260510205936842"></p>
-<p>之后丢到tscan扫一下</p>
-<p><img src="/images/image-20260510210205985.png" alt="image-20260510210205985"></p>
-<p><img src="/images/image-20260510210239711.png" alt="image-20260510210239711"></p>
+<p>用 dnsx 查存活子域的 ip 地址</p>
+<p><img data-src="/images/image-20260510205936842.png" alt="image-20260510205936842"></p>
+<p>之后丢到 tscan 扫一下</p>
+<p><img data-src="/images/image-20260510210205985.png" alt="image-20260510210205985"></p>
+<p><img data-src="/images/image-20260510210239711.png" alt="image-20260510210239711"></p>
 <p> 这个可能是海康摄像头🤔<a target="_blank" rel="noopener" href="http://210.34.87.50/doc/page/login.asp?_1778418145187%EF%BC%8C%E9%A1%BA%E4%BE%BF%E6%89%AB%E4%B8%80%E4%B8%8B%E7%9B%AE%E5%BD%95">http://210.34.87.50/doc/page/login.asp?_1778418145187，顺便扫一下目录</a></p>
-<p><img src="/images/image-20260510213650244.png" alt="image-20260510213650244"></p>
-<p><img src="/images/image-20260510222249342.png" alt="image-20260510222249342"></p>
-<p>用<a target="_blank" rel="noopener" href="http://finger.tidesec.com/">TideFinger 潮汐指纹 TideFinger 潮汐指纹</a>来看看</p>
-<p><img src="/images/image-20260510211808123.png" alt="image-20260510211808123"></p>
-<p><img src="/images/image-20260510212008760.png" alt="image-20260510212008760"></p>
+<p><img data-src="/images/image-20260510213650244.png" alt="image-20260510213650244"></p>
+<p><img data-src="/images/image-20260510222249342.png" alt="image-20260510222249342"></p>
+<p>用 <a target="_blank" rel="noopener" href="http://finger.tidesec.com/">TideFinger 潮汐指纹 TideFinger 潮汐指纹</a>来看看</p>
+<p><img data-src="/images/image-20260510211808123.png" alt="image-20260510211808123"></p>
+<p><img data-src="/images/image-20260510212008760.png" alt="image-20260510212008760"></p>
 <p>没有什么效果，但是这个页面很老，可能存在海康威视的历史漏洞🤔</p>
-<p><img src="/images/image-20260510221556901.png" alt="image-20260510221556901"></p>
-<p>用fofa搜一下上面的CIDRR地址，ip&#x3D;”210.34.80.0&#x2F;20”</p>
-<p><img src="/images/image-20260510214328511.png" alt="image-20260510214328511"></p>
-<p><img src="/images/image-20260510214634182.png" alt="image-20260510214634182"></p>
-<p>好像是oj平台🤔，去查询网查一下</p>
-<p><img src="/images/image-20260510215144459.png" alt="image-20260510215144459"></p>
-<p>好像没什么用，不懂怎么会是福建农业大学,继续往下找，又找到一个奇奇怪怪的网站</p>
-<p><img src="/images/image-20260510215750306.png" alt="image-20260510215750306"></p>
+<p><img data-src="/images/image-20260510221556901.png" alt="image-20260510221556901"></p>
+<p>用 fofa 搜一下上面的 CIDRR 地址，ip=” 210.34.80.0 / 20”</p>
+<p><img data-src="/images/image-20260510214328511.png" alt="image-20260510214328511"></p>
+<p><img data-src="/images/image-20260510214634182.png" alt="image-20260510214634182"></p>
+<p>好像是 oj 平台🤔，去查询网查一下</p>
+<p><img data-src="/images/image-20260510215144459.png" alt="image-20260510215144459"></p>
+<p>好像没什么用，不懂怎么会是福建农业大学, 继续往下找，又找到一个奇奇怪怪的网站</p>
+<p><img data-src="/images/image-20260510215750306.png" alt="image-20260510215750306"></p>
 <p>用查询网查这个网站也是福建农业大学的</p>
-<p><img src="/images/image-20260510220222477.png" alt="image-20260510220222477"></p>
+<p><img data-src="/images/image-20260510220222477.png" alt="image-20260510220222477"></p>
 <p>看了一下敏感信息还很多</p>
-<p>丢tsacn扫一下</p>
-<p><img src="/images/image-20260510221146125.png" alt="image-20260510221146125"></p>
-<p>非常干净，没什么端口，有个PostgreSQL，感觉有点说法🤔，继续扫一下目录</p>
-<p><img src="/images/image-20260510222710182.png" alt="image-20260510222710182"></p>
+<p>丢 tsacn 扫一下</p>
+<p><img data-src="/images/image-20260510221146125.png" alt="image-20260510221146125"></p>
+<p>非常干净，没什么端口，有个 PostgreSQL，感觉有点说法🤔，继续扫一下目录</p>
+<p><img data-src="/images/image-20260510222710182.png" alt="image-20260510222710182"></p>
 <p>有个压缩包和文本文件</p>
 <hr>
 <p>忘记掉从哪个网站开始搜，然后又发现一个不寻常的网站</p>
-<p><img src="/images/image-20260510224554709.png" alt="image-20260510224554709"></p>
+<p><img data-src="/images/image-20260510224554709.png" alt="image-20260510224554709"></p>
 <p>信息也是非常的多</p>
-<p><img src="/images/image-20260510224629916.png" alt="image-20260510224629916"></p>
-<p><img src="/images/image-20260510224644092.png" alt="image-20260510224644092"></p>
+<p><img data-src="/images/image-20260510224629916.png" alt="image-20260510224629916"></p>
+<p><img data-src="/images/image-20260510224644092.png" alt="image-20260510224644092"></p>
 <hr>
-<p><img src="/images/image-20260510231308506.png" alt="image-20260510231308506"></p>
+<p><img data-src="/images/image-20260510231308506.png" alt="image-20260510231308506"></p>
 <p><a target="_blank" rel="noopener" href="https://cgzb.fafu.edu.cn/sfw2/#%E8%BF%99%E4%B8%AA%E5%A5%BD%E5%83%8F%E4%B9%9F%E6%8C%BA%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84">https://cgzb.fafu.edu.cn/sfw2/#这个好像也挺有问题的</a></p>
-<p><img src="/images/image-20260510231344749.png" alt="image-20260510231344749"></p>
-<p>可以直接看到他的js代码</p>
-<p><img src="/images/image-20260510231926864.png" alt="image-20260510231926864"></p>
+<p><img data-src="/images/image-20260510231344749.png" alt="image-20260510231344749"></p>
+<p>可以直接看到他的 js 代码</p>
+<p><img data-src="/images/image-20260510231926864.png" alt="image-20260510231926864"></p>
 <hr>
-<h2 id="信息收集一些想法"><a href="#信息收集一些想法" class="headerlink" title="信息收集一些想法"></a>信息收集一些想法</h2><h3 id="第一阶段：被动信息收集"><a href="#第一阶段：被动信息收集" class="headerlink" title="第一阶段：被动信息收集"></a>第一阶段：被动信息收集</h3><h5 id="1-域名与子域名全量收集"><a href="#1-域名与子域名全量收集" class="headerlink" title="1 域名与子域名全量收集"></a>1 域名与子域名全量收集</h5><p>搜索各学院域名：<code>domain=&quot;*.fafu.edu.cn&quot; &amp;&amp; title=&quot;学院&quot;</code></p>
-<p>搜索部门域名：<code>domain=&quot;*.fafu.edu.cn&quot; &amp;&amp; title=&quot;处&quot; || title=&quot;部&quot;</code></p>
-<p>搜索实验室域名：<code>domain=&quot;*.fafu.edu.cn&quot; &amp;&amp; title=&quot;实验室&quot;</code></p>
-<p>搜索学生系统：<code>domain=&quot;*.fafu.edu.cn&quot; &amp;&amp; title=&quot;学生&quot; || title=&quot;教务&quot;</code></p>
+<h2 id="信息收集一些想法"><a href="#信息收集一些想法" class="headerlink" title="信息收集一些想法"></a>信息收集一些想法</h2><h3 id="第一阶段：被动信息收集"><a href="#第一阶段：被动信息收集" class="headerlink" title="第一阶段：被动信息收集"></a>第一阶段：被动信息收集</h3><h5 id="1-域名与子域名全量收集"><a href="#1-域名与子域名全量收集" class="headerlink" title="1 域名与子域名全量收集"></a>1 域名与子域名全量收集</h5><p>搜索各学院域名：<code>domain="*.fafu.edu.cn" &amp;&amp; title="学院"</code></p>
+<p>搜索部门域名：<code>domain="*.fafu.edu.cn" &amp;&amp; title="处" || title="部"</code></p>
+<p>搜索实验室域名：<code>domain="*.fafu.edu.cn" &amp;&amp; title="实验室"</code></p>
+<p>搜索学生系统：<code>domain="*.fafu.edu.cn" &amp;&amp; title="学生" || title="教务"</code></p>
 <h5 id="2-IP-地址与网段收集"><a href="#2-IP-地址与网段收集" class="headerlink" title="2 IP 地址与网段收集"></a>2 IP 地址与网段收集</h5><p>域名批量解析</p>
 <p>ASN 查询</p>
 <p>WHOIS 反查</p>
 <p>IP 段归属验证</p>
-<h5 id="3组织架构与人员信息收集"><a href="#3组织架构与人员信息收集" class="headerlink" title="3组织架构与人员信息收集"></a>3组织架构与人员信息收集</h5><p>官网信息提取</p>
-<p>搜索引擎搜索：<code>site:fafu.edu.cn &quot;教授&quot; &quot;邮箱&quot;</code>、<code>site:fafu.edu.cn &quot;电话&quot;</code></p>
+<h5 id="3组织架构与人员信息收集"><a href="#3组织架构与人员信息收集" class="headerlink" title="3组织架构与人员信息收集"></a>3 组织架构与人员信息收集</h5><p>官网信息提取</p>
+<p>搜索引擎搜索：<code>site:fafu.edu.cn "教授" "邮箱"</code>、<code>site:fafu.edu.cn "电话"</code></p>
 <p>学术平台搜索</p>
-<p>社交媒体搜索**（公众号，小程序）**</p>
-<h5 id="4-泄露信息收集"><a href="#4-泄露信息收集" class="headerlink" title="4 泄露信息收集"></a>4 泄露信息收集</h5><p><strong>Github 搜索</strong>：<code>&quot;fafu.edu.cn&quot; password</code>、<code>&quot;fafu.edu.cn&quot; key</code>、<code>&quot;fafu.edu.cn&quot; secret</code></p>
+<p>社交媒体搜索 **（公众号，小程序）**</p>
+<h5 id="4-泄露信息收集"><a href="#4-泄露信息收集" class="headerlink" title="4 泄露信息收集"></a>4 泄露信息收集</h5><p><strong>Github 搜索</strong>：<code>"fafu.edu.cn" password</code>、<code>"fafu.edu.cn" key</code>、<code>"fafu.edu.cn" secret</code></p>
 <p><strong>网盘搜索</strong>：在百度网盘、阿里云盘等平台搜索 “福建农林大学” 相关文件</p>
 <p>浏览器搜索</p>
 <h3 id="第二阶段：主动信息收集"><a href="#第二阶段：主动信息收集" class="headerlink" title="第二阶段：主动信息收集"></a>第二阶段：主动信息收集</h3><h5 id="端口扫描与服务识别"><a href="#端口扫描与服务识别" class="headerlink" title="端口扫描与服务识别"></a>端口扫描与服务识别</h5><p><strong>重点端口关注</strong>：</p>
 <ul>
-<li>80&#x2F;443：Web 服务</li>
-<li>21&#x2F;22：FTP&#x2F;SSH 服务</li>
+<li>80 / 443：Web 服务</li>
+<li>21/22：FTP/SSH 服务</li>
 <li>3306：MySQL 数据库</li>
 <li>1433：SQL Server 数据库</li>
 <li>5432：PostgreSQL 数据库</li>
 <li>6379：Redis 数据库</li>
 <li>27017：MongoDB 数据库</li>
 <li>3389：远程桌面服务</li>
-<li>8080&#x2F;8081&#x2F;9000：常见 Web 应用端口</li>
+<li>8080/8081/9000：常见 Web 应用端口</li>
 </ul>
 <h4 id="Web-应用指纹识别"><a href="#Web-应用指纹识别" class="headerlink" title="Web 应用指纹识别"></a>Web 应用指纹识别</h4><p>使用多种工具交叉验证，提高指纹识别准确率</p>
 <h4 id="目录与文件扫描"><a href="#目录与文件扫描" class="headerlink" title="目录与文件扫描"></a>目录与文件扫描</h4><p>使用多种字典和工具进行扫描，提高发现率</p>
@@ -444,13 +486,13 @@
     <div class="post-body" itemprop="articleBody">
           <p>欢迎来到我的博客！这是使用 Hexo + Next 主题搭建的个人博客。</p>
 <h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><p>本站使用 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 静态博客框架，搭配 <a target="_blank" rel="noopener" href="https://theme-next.js.org/">Next</a> 主题，部署在 GitHub Pages 上。</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;文章标题&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"文章标题"</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
 
       
     </div>
@@ -484,6 +526,24 @@
     </span>
     <span class="author" itemprop="copyrightHolder">Hot233</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
@@ -502,6 +562,9 @@
     <span>0%</span>
   </div>
   <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Hot233" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
