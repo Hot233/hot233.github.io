@@ -1525,7 +1525,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #213c0b;
+    background: #46994f;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3190,4 +3190,78 @@ header.header {
   .comments {
     padding: 10px 12px;
   }
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+::selection {
+  background: #ff6b81;
+  color: #fff;
+}
+::-moz-selection {
+  background: #ff6b81;
+  color: #fff;
+}
+.post-block {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.post-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.post-body p a,
+.post-body li a {
+  text-decoration: none;
+  background: linear-gradient(#ff6b81, #ff6b81) no-repeat left bottom;
+  background-size: 0 2px;
+  transition: background-size 0.3s ease;
+  padding-bottom: 2px;
+}
+.post-body p a:hover,
+.post-body li a:hover {
+  background-size: 100% 2px;
+}
+.post-block,
+.sidebar-inner,
+.comments,
+.pagination .page-number,
+.btn,
+img,
+code,
+pre,
+blockquote,
+.back-to-top,
+.aplayer {
+  border-radius: 10px !important;
+}
+.sidebar-nav li,
+.menu-item,
+.headband {
+  border-radius: 8px;
+}
+input,
+textarea {
+  border-radius: 8px !important;
+}
+body {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='7' fill='none' stroke='%23ff6b81' stroke-width='1.5'/></svg>") 8 8, auto;
+}
+a,
+button,
+.post-block,
+input,
+textarea,
+.aplayer {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='7' fill='%23ff6b81' opacity='0.3' stroke='%23ff6b81' stroke-width='1.5'/></svg>") 8 8, pointer;
 }
