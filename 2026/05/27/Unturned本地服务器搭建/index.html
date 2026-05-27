@@ -1,0 +1,1952 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Unturned 本地服务器搭建 | Hot233's Blog</title><meta name="author" content="Hot233"><meta name="copyright" content="Hot233"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、服务器的搭建首先得下载他的专门服务器  之后启动一次之后，查看他的本地文件  之后会进入一个 U3DS 的文件夹打开 serves 文件夹，进入 defuault 文件夹，再进入 serve 文件夹，打开里面的 Commands.dat 1&quot;F:\LegionZone\steam\steamapps\common\U3DS\Servers\Default\Server\Commands.dat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unturned 本地服务器搭建">
+<meta property="og:url" content="https://hot233.github.io/2026/05/27/Unturned%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Hot233&#39;s Blog">
+<meta property="og:description" content="一、服务器的搭建首先得下载他的专门服务器  之后启动一次之后，查看他的本地文件  之后会进入一个 U3DS 的文件夹打开 serves 文件夹，进入 defuault 文件夹，再进入 serve 文件夹，打开里面的 Commands.dat 1&quot;F:\LegionZone\steam\steamapps\common\U3DS\Servers\Default\Server\Commands.dat">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hot233.github.io/images/111.jpg">
+<meta property="article:published_time" content="2026-05-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-27T04:48:07.987Z">
+<meta property="article:author" content="Hot233">
+<meta property="article:tag" content="Steam">
+<meta property="article:tag" content="Unturned">
+<meta property="article:tag" content="游戏服务器">
+<meta property="article:tag" content="联机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hot233.github.io/images/111.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Unturned 本地服务器搭建",
+  "url": "https://hot233.github.io/2026/05/27/Unturned%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/",
+  "image": "https://hot233.github.io/images/111.jpg",
+  "datePublished": "2026-05-26T16:00:00.000Z",
+  "dateModified": "2026-05-27T04:48:07.987Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Hot233",
+      "url": "https://hot233.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://hot233.github.io/2026/05/27/Unturned%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":800,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Unturned 本地服务器搭建',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/runtime.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(/images/preview_bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/111.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-th"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/111.jpg" alt="Logo"><span class="site-name">Hot233's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Unturned 本地服务器搭建</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-th"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Unturned 本地服务器搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-26T16:00:00.000Z" title="发表于 2026-05-27 00:00:00">2026-05-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-27T04:48:07.987Z" title="更新于 2026-05-27 12:48:07">2026-05-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">6.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-05-27 12:48:07&quot;}" hidden></div><h2 id="一、服务器的搭建"><a href="#一、服务器的搭建" class="headerlink" title="一、服务器的搭建"></a>一、服务器的搭建</h2><p>首先得下载他的专门服务器</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260526020029313.png" alt="image-20260526020029313"></p>
+<p>之后启动一次之后，查看他的本地文件</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260526020215946.png" alt="image-20260526020215946"></p>
+<p>之后会进入一个 U3DS 的文件夹打开 serves 文件夹，进入 defuault 文件夹，再进入 serve 文件夹，打开里面的 Commands.dat</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"F:\LegionZone\steam\steamapps\common\U3DS\Servers\Default\Server\Commands.dat"</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260526020918805.png" alt="image-20260526020918805"></p>
+<p>这里分享几个常用设置</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Name hot2333 （地图名字）</span><br><span class="line">Map California2 （地图）Russia/PEL等</span><br><span class="line">Mode Normal （难度）easy/normal/hard</span><br><span class="line">Perspective Both （人称视角）both表示第一和三都可以</span><br><span class="line">PVE PVE （是否开启pvp）</span><br><span class="line">MaxPlayers 3 （最大游玩人数）</span><br><span class="line">Loadout 255/297/298 （复活自带物品）</span><br><span class="line">Cheats on （是否允许作弊）</span><br><span class="line">Welcome 114514 （欢迎语）</span><br><span class="line">GSLT 8C5C40B5355A1824EE9818DA1FC35269 （steam服务器账号令牌）</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>之后回退到 u3ds 文件夹，将 unturned.exe 创建快捷方式，打开快捷方式的属性，在目标后面加上</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-NetTransport = SteamNetworking</span><br></pre></td></tr></tbody></table></figure>
+
+<p>点击确认</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527012827217.png" alt="image-20260527012827217"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527012943553.png" alt="image-20260527012943553"></p>
+<p>其实一个最基本的服务器就已经搭建好了，但是此时如果进不去服务器，可能需要 steam 服务器令牌</p>
+<p>访问<a target="_blank" rel="noopener" href="https://steamcommunity.com/dev/managegameservers">steamcommunity.com</a> 创建对应 steam 令牌，填写在之前的 common.dat 中即可（注意 unturned 的游戏是 304930），之后也可以 config.txt 中的 login token 那填入令牌（详细配置可看后文相关部分），此时通过快捷方式就可以正常运行我们的服务器，运行服务器时请保证对 steam 的稳定链接</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527013433208.png" alt="image-20260527013433208"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527124010837.png" alt="image-20260527124010837"></p>
+<p>服务器打开后会有一个 sever code，将其复制给好友，让好友在游戏中输入即可</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527014543679.png" alt="image-20260527014543679"></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527014606205.png" alt="image-20260527014606205"></p>
+<p>此时便可联机了，建议主机要好一点，其余细节可观看 b 站视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HF4m177QC/?spm_id_from=333.337.search-card.all.click&amp;vd_source=eaca1b3b6abf32f0d2564bc57ffae9a9">2024 超详细的 Unturned 联机教程_哔哩哔哩 bilibili_未转变者_攻略</a></p>
+<h2 id="二、创意工坊"><a href="#二、创意工坊" class="headerlink" title="二、创意工坊"></a>二、创意工坊</h2><p>配置完服务器后，接下来就是添加创意攻防的地图</p>
+<p>先打开 WorkshopDownloadConfig.json，在 default 文件夹内</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527015037730.png" alt="image-20260527015037730"></p>
+<p>注意 File_IDs，我们将在这里添加创意工坊地图</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527015056899.png" alt="image-20260527015056899"></p>
+<p>这里以 California2 为例，在 steam 中的创意工坊中找到相应项目，打开。</p>
+<p>注意左上角的 url，<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3707778928">https://steamcommunity.com/sharedfiles/filedetails/?id=3707778928</a></p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527015421782.png" alt="image-20260527015421782"></p>
+<p>3707778928 就是要填写在 File_IDs 中的</p>
+<p>加州还有一个配套的资源包，也需要下载，重复上述步骤，每个 id 用 , 隔开</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527015636182.png" alt="image-20260527015636182"></p>
+<p>保存好文件之后，运行服务器，就可以成功加载加州 2。可参考视频 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1RrRiBaEMh/?spm_id_from=333.337.search-card.all.click&amp;vd_source=eaca1b3b6abf32f0d2564bc57ffae9a9">Unturned 如何联机加利福尼亚 2.0_未转变者</a></p>
+<h2 id="三、修改config"><a href="#三、修改config" class="headerlink" title="三、修改config"></a>三、修改 config</h2><p>我们配置的服务器时可以修改 config 的，打开 config.txt</p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/unturned/image-20260527020221091.png" alt="image-20260527020221091"></p>
+<p>这里给出相关修改信息，只要在文件中一一对应即可</p>
+<h3 id="一、Browser-—-服务器列表显示"><a href="#一、Browser-—-服务器列表显示" class="headerlink" title="*一、Browser — 服务器列表显示*"></a><em><strong>* 一、Browser — 服务器列表显示 *</strong></em></h3><table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Icon</td>
+<td>服务器大厅左上角显示的 64x64 图标 URL</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>Thumbnail</td>
+<td>服务器列表中显示的 32x32 缩略图 URL</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>Desc_Hint</td>
+<td>服务器大厅中服务器名下方的简短描述</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>Desc_Full</td>
+<td>服务器大厅右下方的详细描述</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>Desc_Server_List</td>
+<td>服务器列表中服务器名下方的简短描述</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>Login_Token</td>
+<td>Game Server Login Token 在 steamcommunity.com/dev/managegameservers 生成</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>BookmarkHost</td>
+<td>广告的 IP / DNS / Web 地址</td>
+<td>无默认值</td>
+</tr>
+<tr>
+<td>Is_Using_Anycast_Proxy</td>
+<td>是否使用 Anycast 代理 如果为 true，服务器大厅会警告游戏内延迟可能更高</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Monetization</td>
+<td>服务器货币化方式 可选: Unspecified / Any / None / NonGameplay / Monetized</td>
+<td>默认: Unspecified</td>
+</tr>
+<tr>
+<td>Links</td>
+<td>服务器大厅显示的链接按钮（JSON 数组格式）</td>
+<td>无默认值</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 二、Server — 服务器核心设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VAC_Secure</td>
+<td>是否启用 Valve Anti-Cheat (VAC)</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>BattlEye_Secure</td>
+<td>是否启用 BattlEye Anti-Cheat</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Max_Ping_Milliseconds</td>
+<td>最大允许延迟（毫秒），超过踢出</td>
+<td>默认: 750</td>
+</tr>
+<tr>
+<td>Timeout_Queue_Seconds</td>
+<td>排队超时时间（秒）</td>
+<td>默认: 15</td>
+</tr>
+<tr>
+<td>Timeout_Game_Seconds</td>
+<td>游戏中超时时间（秒）</td>
+<td>默认: 30</td>
+</tr>
+<tr>
+<td>Max_Packets_Per_Second</td>
+<td>每秒最大数据包数</td>
+<td>默认: 0（无限制）</td>
+</tr>
+<tr>
+<td>Join_Rate_Limit_Window_Seconds</td>
+<td>加入速率限制窗口（秒） 同一客户端超过 2 次重连将被踢出</td>
+<td>默认: 40</td>
+</tr>
+<tr>
+<td>Bad_Packet_Rate_Limit_Window_Seconds</td>
+<td>坏包速率限制窗口（秒）</td>
+<td>默认: 2.5</td>
+</tr>
+<tr>
+<td>Bad_Packet_Rate_Limit_Threshold</td>
+<td>坏包速率限制阈值（次数） 超过此数量拒绝连接</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Rate_Limit_Kick_Threshold</td>
+<td>速率限制踢出阈值 客户端在冷却期间调用受限方法的次数</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Max_Clients_With_Same_IP_Address</td>
+<td>同 IP 最大客户端数 超过后阻止新连接（Fake IP 关闭时有效）</td>
+<td>默认: 64</td>
+</tr>
+<tr>
+<td>Max_Clients_With_Same_IP_Address_Log_Warnings</td>
+<td>同 IP 拒绝时是否记录日志</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Fake_Lag_Threshold_Seconds</td>
+<td>假延迟检测阈值（秒） 超过此时间未收到输入包则标记</td>
+<td>默认: 3</td>
+</tr>
+<tr>
+<td>Fake_Lag_Log_Warnings</td>
+<td>假延迟检测是否记录日志 误报率较高，建议仅用于调试</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Fake_Lag_Damage_Penalty_Multiplier</td>
+<td>假延迟惩罚期间的 PvP 伤害倍率</td>
+<td>默认: 0.1</td>
+</tr>
+<tr>
+<td>Enable_Kick_Input_Spam</td>
+<td>是否踢出输入刷屏玩家</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Enable_Kick_Input_Timeout</td>
+<td>是否踢出长时间无输入玩家</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Enable_Scheduled_Shutdown</td>
+<td>是否启用定时关服</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Scheduled_Shutdown_Time</td>
+<td>定时关服时间 需要 Enable_Scheduled_Shutdown = true</td>
+<td>默认: 1:30 am</td>
+</tr>
+<tr>
+<td>Scheduled_Shutdown_Warnings</td>
+<td>关服警告倒计时列表 格式: 时: 分: 秒 的列表</td>
+<td>默认: 从 30 分钟开始倒计时</td>
+</tr>
+<tr>
+<td>Enable_Update_Shutdown</td>
+<td>检测到新版本时自动关服</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Update_Steam_Beta_Name</td>
+<td>更新检查的目标分支名称</td>
+<td>默认: public</td>
+</tr>
+<tr>
+<td>Update_Shutdown_Warnings</td>
+<td>更新关服警告倒计时列表 格式同 Scheduled_Shutdown_Warnings</td>
+<td>默认: 从 3 分钟开始倒计时</td>
+</tr>
+<tr>
+<td>Chat_Always_Use_Rich_Text</td>
+<td>聊天始终使用富文本（已无效，保留用于兼容）</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Validate_EconInfo_Hash</td>
+<td>是否验证 EconInfo.json 哈希</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Use_FakeIP</td>
+<td>是否使用 Fake IP 详见官方文档</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Reset_Vehicles_Outside_Horizontal_Distance</td>
+<td>车辆超出此水平距离（米）传送回地图中心 0 表示不限制</td>
+<td>默认: 40000</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 三、UnityEvents — 事件权限 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Allow_Server_Messages</td>
+<td>允许服务器端广播消息</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Allow_Server_Commands</td>
+<td>允许服务器端执行命令</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Allow_Client_Messages</td>
+<td>允许客户端广播消息</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Allow_Client_Commands</td>
+<td>允许客户端执行命令</td>
+<td>默认: False</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 四、Items — 物品设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spawn_Chance</td>
+<td>物品生成比例 [0~1] 如 0.2 表示 100 个生成点最多同时存在 20 个物品</td>
+<td>Easy: 0.35 Normal: 0.35 Hard: 0.15</td>
+</tr>
+<tr>
+<td>Despawn_Dropped_Time</td>
+<td>玩家丢弃物品消失时间（秒）</td>
+<td>默认: 600</td>
+</tr>
+<tr>
+<td>Despawn_Natural_Time</td>
+<td>自然生成物品消失时间（秒）</td>
+<td>默认: 900</td>
+</tr>
+<tr>
+<td>Respawn_Time</td>
+<td>物品不足时新物品生成间隔（秒）</td>
+<td>Easy: 50 Normal: 100 Hard: 150</td>
+</tr>
+<tr>
+<td>Quality_Full_Chance</td>
+<td>物品满品质生成概率 [0~1]</td>
+<td>Easy: 0.1 Normal: 0.1 Hard: 0.01</td>
+</tr>
+<tr>
+<td>Quality_Multiplier</td>
+<td>非满品质时的随机品质缩放系数 如 0.5 表示品质减半</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Gun_Bullets_Full_Chance</td>
+<td>枪支满弹生成概率 [0~1]</td>
+<td>Easy: 0.1 Normal: 0.05 Hard: 0.025</td>
+</tr>
+<tr>
+<td>Gun_Bullets_Multiplier</td>
+<td>枪支非满弹时的随机弹药缩放系数</td>
+<td>Easy: 1 Normal: 0.25 Hard: 0.1</td>
+</tr>
+<tr>
+<td>Magazine_Bullets_Full_Chance</td>
+<td>弹匣满弹生成概率 [0~1]</td>
+<td>Easy: 0.1 Normal: 0.05 Hard: 0.025</td>
+</tr>
+<tr>
+<td>Magazine_Bullets_Multiplier</td>
+<td>弹匣非满弹时的随机弹药缩放系数</td>
+<td>Easy: 1 Normal: 0.5 Hard: 0.25</td>
+</tr>
+<tr>
+<td>Crate_Bullets_Full_Chance</td>
+<td>弹药箱满额生成概率 [0~1]</td>
+<td>Easy: 0.1 Normal: 0.05 Hard: 0.025</td>
+</tr>
+<tr>
+<td>Crate_Bullets_Multiplier</td>
+<td>弹药箱非满额时的随机数量缩放系数</td>
+<td>Easy: 1 Normal: 1 Hard: 0.75</td>
+</tr>
+<tr>
+<td>Has_Durability</td>
+<td>是否启用物品耐久度 关闭后物品满品质且不下降</td>
+<td>Easy: False Normal: True Hard: True</td>
+</tr>
+<tr>
+<td>Food_Spawns_At_Full_Quality</td>
+<td>食物是否满品质生成 替代 Has_Durability 的食物部分</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Water_Spawns_At_Full_Quality</td>
+<td>水是否满品质生成 替代 Has_Durability 的水部分</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Clothing_Spawns_At_Full_Quality</td>
+<td>衣物是否满品质生成 替代 Has_Durability 的衣物部分</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Weapons_Spawn_At_Full_Quality</td>
+<td>武器是否满品质生成 替代 Has_Durability 的武器部分</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Default_Spawns_At_Full_Quality</td>
+<td>其他物品是否满品质生成 不适用上述分类的兜底设置</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Clothing_Has_Durability</td>
+<td>衣物是否有耐久度 false 时衣物受损不降品质</td>
+<td>Easy: False Normal: True Hard: True</td>
+</tr>
+<tr>
+<td>Weapons_Have_Durability</td>
+<td>武器是否有耐久度 false 时武器使用不降品质</td>
+<td>Easy: False Normal: True Hard: True</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 五、Vehicles — 载具设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Decay_Time</td>
+<td>车辆被忽视后开始损坏的时间（秒）</td>
+<td>默认: 604800</td>
+</tr>
+<tr>
+<td>Decay_Damage_Per_Second</td>
+<td>车辆超过 Decay_Time 后的每秒伤害</td>
+<td>默认: 0.1</td>
+</tr>
+<tr>
+<td>Has_Battery_Chance</td>
+<td>车辆生成时带电池的概率 [0~1]</td>
+<td>Easy: 1 Normal: 0.8 Hard: 0.25</td>
+</tr>
+<tr>
+<td>Min_Battery_Charge</td>
+<td>带电池时的最低初始电量 [0~1]</td>
+<td>Easy: 0.8 Normal: 0.5 Hard: 0.1</td>
+</tr>
+<tr>
+<td>Max_Battery_Charge</td>
+<td>带电池时的最高初始电量 [0~1]</td>
+<td>Easy: 1 Normal: 0.75 Hard: 0.3</td>
+</tr>
+<tr>
+<td>Has_Tire_Chance</td>
+<td>每个轮子有轮胎的概率 [0~1]</td>
+<td>Easy: 1 Normal: 0.85 Hard: 0.7</td>
+</tr>
+<tr>
+<td>Respawn_Time</td>
+<td>车辆爆炸或沉水后重生时间（秒）</td>
+<td>默认: 300</td>
+</tr>
+<tr>
+<td>Unlocked_After_Seconds_In_Safezone</td>
+<td>锁定车辆在安全区空置后自动解锁时间（秒）</td>
+<td>默认: 3600</td>
+</tr>
+<tr>
+<td>Armor_Multiplier</td>
+<td>车辆所受伤害倍率 如 0.5 表示伤害减半</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Child_Explosion_Armor_Multiplier</td>
+<td>附着物阻挡爆炸时的车辆伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Gun_Lowcal_Damage_Multiplier</td>
+<td>非「重型武器」对车辆伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Gun_Highcal_Damage_Multiplier</td>
+<td>「重型武器」对车辆伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Melee_Damage_Multiplier</td>
+<td>近战对车辆伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Melee_Repair_Multiplier</td>
+<td>近战修理车辆倍率 如 Blowtorch</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Max_Instances_Tiny</td>
+<td>Tiny 地图最大自然生成车辆数</td>
+<td>默认: 4</td>
+</tr>
+<tr>
+<td>Max_Instances_Small</td>
+<td>Small 地图最大自然生成车辆数</td>
+<td>默认: 8</td>
+</tr>
+<tr>
+<td>Max_Instances_Medium</td>
+<td>Medium 地图最大自然生成车辆数</td>
+<td>默认: 16</td>
+</tr>
+<tr>
+<td>Max_Instances_Large</td>
+<td>Large 地图最大自然生成车辆数</td>
+<td>默认: 32</td>
+</tr>
+<tr>
+<td>Max_Instances_Insane</td>
+<td>Insane 地图最大自然生成车辆数</td>
+<td>默认: 64</td>
+</tr>
+<tr>
+<td>Min_Natural_Vehicles</td>
+<td>最少自然车辆数（与 Max_Instances 取较小值）</td>
+<td>默认: 16</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 六、Zombies — 僵尸设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spawn_Chance</td>
+<td>僵尸生成比例 [0~1]</td>
+<td>Easy: 0.2 Normal: 0.25 Hard: 0.3</td>
+</tr>
+<tr>
+<td>Loot_Chance</td>
+<td>僵尸掉落物品概率 [0~1] 掉落多于 1 件时不适用</td>
+<td>Easy: 0.55 Normal: 0.5 Hard: 0.3</td>
+</tr>
+<tr>
+<td>Crawler_Chance</td>
+<td>生成爬行者的概率 [0~1]</td>
+<td>Easy: 0 Normal: 0.15 Hard: 0.125</td>
+</tr>
+<tr>
+<td>Sprinter_Chance</td>
+<td>生成疾跑者的概率 [0~1]</td>
+<td>Easy: 0 Normal: 0.15 Hard: 0.175</td>
+</tr>
+<tr>
+<td>Flanker_Chance</td>
+<td>生成侧翼者的概率 [0~1]</td>
+<td>Easy: 0 Normal: 0.025 Hard: 0.05</td>
+</tr>
+<tr>
+<td>Burner_Chance</td>
+<td>生成燃烧者的概率 [0~1]</td>
+<td>Easy: 0 Normal: 0.025 Hard: 0.05</td>
+</tr>
+<tr>
+<td>Acid_Chance</td>
+<td>生成酸液喷射者的概率 [0~1]</td>
+<td>Easy: 0 Normal: 0.025 Hard: 0.05</td>
+</tr>
+<tr>
+<td>Boss_Electric_Chance</td>
+<td>生成电击 Boss 的概率 [0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Boss_Wind_Chance</td>
+<td>生成地震 Boss 的概率 [0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Boss_Fire_Chance</td>
+<td>生成喷火 Boss 的概率 [0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Spirit_Chance</td>
+<td>生成幽灵的概率 [0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>DL_Red_Volatile_Chance</td>
+<td>生成消光红色夜魔的概率（联动）[0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>DL_Blue_Volatile_Chance</td>
+<td>生成消光蓝色夜魔的概率（联动）[0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Boss_Elver_Stomper_Chance</td>
+<td>生成 Elver 最终 Boss 的概率 [0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Boss_Kuwait_Chance</td>
+<td>生成 Kuwait 最终 Boss 的概率 [0~1]</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Respawn_Day_Time</td>
+<td>白天僵尸死亡后重生时间（秒）</td>
+<td>默认: 360</td>
+</tr>
+<tr>
+<td>Respawn_Night_Time</td>
+<td>满月时僵尸死亡后重生时间（秒）</td>
+<td>默认: 30</td>
+</tr>
+<tr>
+<td>Respawn_Beacon_Time</td>
+<td>尸潮信标期间僵尸重生时间（秒）</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Quest_Boss_Respawn_Interval</td>
+<td>任务 Boss 最小重生间隔（秒） 防止玩家刷 Boss 掉落</td>
+<td>默认: 600</td>
+</tr>
+<tr>
+<td>Damage_Multiplier</td>
+<td>僵尸造成伤害倍率 如 2.0 表示伤害翻倍</td>
+<td>Easy: 0.75 Normal: 1 Hard: 1.5</td>
+</tr>
+<tr>
+<td>Armor_Multiplier</td>
+<td>僵尸所受伤害倍率 如 0.5 表示伤害减半</td>
+<td>Easy: 1.25 Normal: 1 Hard: 0.75</td>
+</tr>
+<tr>
+<td>Backstab_Multiplier</td>
+<td>背后攻击僵尸伤害倍率 仅特定武器适用</td>
+<td>默认: 1.25</td>
+</tr>
+<tr>
+<td>NonHeadshot_Armor_Multiplier</td>
+<td>非爆头伤害倍率 用于爆头专用模式</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Beacon_Experience_Multiplier</td>
+<td>信标期间击杀僵尸经验倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Full_Moon_Experience_Multiplier</td>
+<td>满月击杀僵尸经验倍率</td>
+<td>默认: 2</td>
+</tr>
+<tr>
+<td>Min_Drops</td>
+<td>普通僵尸最少掉落数</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Max_Drops</td>
+<td>普通僵尸最多掉落数</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Min_Mega_Drops</td>
+<td>巨型僵尸最少掉落数</td>
+<td>默认: 5</td>
+</tr>
+<tr>
+<td>Max_Mega_Drops</td>
+<td>巨型僵尸最多掉落数</td>
+<td>默认: 5</td>
+</tr>
+<tr>
+<td>Min_Boss_Drops</td>
+<td>Boss 僵尸最少掉落数</td>
+<td>默认: 8</td>
+</tr>
+<tr>
+<td>Max_Boss_Drops</td>
+<td>Boss 僵尸最多掉落数</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Slow_Movement</td>
+<td>所有僵尸移动速度减慢</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Can_Stun</td>
+<td>僵尸可否被眩晕</td>
+<td>Easy: True Normal: True Hard: False</td>
+</tr>
+<tr>
+<td>Only_Critical_Stuns</td>
+<td>仅暴击才可眩晕僵尸 Can_Stun = false 时不适用</td>
+<td>Easy: False Normal: False Hard: True</td>
+</tr>
+<tr>
+<td>Weapons_Use_Player_Damage</td>
+<td>对僵尸使用 PvP 伤害值而非僵尸专用伤害</td>
+<td>Easy: False Normal: False Hard: True</td>
+</tr>
+<tr>
+<td>Can_Target_Barricades</td>
+<td>僵尸是否攻击阻挡移动的路障</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Can_Target_Structures</td>
+<td>僵尸是否攻击阻挡移动的建筑</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Can_Target_Vehicles</td>
+<td>僵尸是否攻击阻挡移动的车辆</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Can_Target_Objects</td>
+<td>僵尸是否攻击阻挡移动的物体（如围栏）</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Beacon_Max_Rewards</td>
+<td>信标最大奖励物品数 0 表示不限制</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Beacon_Max_Participants</td>
+<td>信标奖励缩放的最大参与人数 0 表示不限制</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Beacon_Rewards_Multiplier</td>
+<td>信标奖励总数倍率 在 Beacon_Max_Rewards 之前计算</td>
+<td>默认: 1</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 七、Animals — 动物设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Respawn_Time</td>
+<td>动物死亡后重生时间（秒）</td>
+<td>默认: 180</td>
+</tr>
+<tr>
+<td>Damage_Multiplier</td>
+<td>动物造成伤害倍率 如 2.0 表示翻倍</td>
+<td>Easy: 0.75 Normal: 1 Hard: 1.5</td>
+</tr>
+<tr>
+<td>Armor_Multiplier</td>
+<td>动物所受伤害倍率 如 0.5 表示减半</td>
+<td>Easy: 1.25 Normal: 1 Hard: 0.75</td>
+</tr>
+<tr>
+<td>Max_Instances_Tiny</td>
+<td>Tiny 地图最大动物数</td>
+<td>默认: 4</td>
+</tr>
+<tr>
+<td>Max_Instances_Small</td>
+<td>Small 地图最大动物数</td>
+<td>默认: 8</td>
+</tr>
+<tr>
+<td>Max_Instances_Medium</td>
+<td>Medium 地图最大动物数</td>
+<td>默认: 16</td>
+</tr>
+<tr>
+<td>Max_Instances_Large</td>
+<td>Large 地图最大动物数</td>
+<td>默认: 32</td>
+</tr>
+<tr>
+<td>Max_Instances_Insane</td>
+<td>Insane 地图最大动物数</td>
+<td>默认: 64</td>
+</tr>
+<tr>
+<td>Weapons_Use_Player_Damage</td>
+<td>对动物使用 PvP 伤害值</td>
+<td>Easy: False Normal: False Hard: True</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 八、Barricades — 路障设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Decay_Time</td>
+<td>路障衰减时间（秒） 所有者 / 组最后游玩后计时 服务器离线超过一半时间则重置</td>
+<td>默认: 604800</td>
+</tr>
+<tr>
+<td>Armor_Lowtier_Multiplier</td>
+<td>「护甲等级：低」路障所受伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Armor_Hightier_Multiplier</td>
+<td>「护甲等级：高」路障所受伤害倍率</td>
+<td>默认: 0.5</td>
+</tr>
+<tr>
+<td>Gun_Lowcal_Damage_Multiplier</td>
+<td>非「重型武器」对路障伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Gun_Highcal_Damage_Multiplier</td>
+<td>「重型武器」对路障伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Melee_Damage_Multiplier</td>
+<td>近战对路障伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Melee_Repair_Multiplier</td>
+<td>近战（如 Blowtorch）修理路障倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Allow_Item_Placement_On_Vehicle</td>
+<td>是否允许在车上建造物品</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Trap_Placement_On_Vehicle</td>
+<td>是否允许在车上放置陷阱（如铁丝网）</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Max_Item_Distance_From_Hull</td>
+<td>物品可建造离车身最远距离</td>
+<td>默认: 64</td>
+</tr>
+<tr>
+<td>Max_Trap_Distance_From_Hull</td>
+<td>陷阱可建造离车身最远距离</td>
+<td>默认: 16</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 九、Structures — 建筑设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Decay_Time</td>
+<td>建筑衰减时间（秒） 所有者 / 组最后游玩后计时</td>
+<td>默认: 604800</td>
+</tr>
+<tr>
+<td>Armor_Lowtier_Multiplier</td>
+<td>「护甲等级：低」建筑所受伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Armor_Hightier_Multiplier</td>
+<td>「护甲等级：高」建筑所受伤害倍率</td>
+<td>默认: 0.5</td>
+</tr>
+<tr>
+<td>Gun_Lowcal_Damage_Multiplier</td>
+<td>非「重型武器」对建筑伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Gun_Highcal_Damage_Multiplier</td>
+<td>「重型武器」对建筑伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Melee_Damage_Multiplier</td>
+<td>近战对建筑伤害倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Melee_Repair_Multiplier</td>
+<td>近战修理建筑倍率</td>
+<td>默认: 1</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 十、Players — 玩家设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Health_Default</td>
+<td>初始生命值 [0~100]</td>
+<td>默认: 100</td>
+</tr>
+<tr>
+<td>Health_Regen_Min_Food</td>
+<td>开始回血所需最低食物值</td>
+<td>默认: 90</td>
+</tr>
+<tr>
+<td>Health_Regen_Min_Water</td>
+<td>开始回血所需最低水量</td>
+<td>默认: 90</td>
+</tr>
+<tr>
+<td>Health_Regen_Ticks</td>
+<td>回血速度（值越低越快）</td>
+<td>默认: 60</td>
+</tr>
+<tr>
+<td>Food_Default</td>
+<td>初始食物值 [0~100]</td>
+<td>Easy: 100 Normal: 100 Hard: 85</td>
+</tr>
+<tr>
+<td>Food_Use_Ticks</td>
+<td>食物消耗速度（值越高越慢）</td>
+<td>Easy: 350 Normal: 300 Hard: 250</td>
+</tr>
+<tr>
+<td>Food_Damage_Ticks</td>
+<td>饥饿致死速度（值越低越快死）</td>
+<td>默认: 15</td>
+</tr>
+<tr>
+<td>Water_Default</td>
+<td>初始水量 [0~100]</td>
+<td>Easy: 100 Normal: 100 Hard: 85</td>
+</tr>
+<tr>
+<td>Water_Use_Ticks</td>
+<td>水量消耗速度（值越高越慢）</td>
+<td>Easy: 320 Normal: 270 Hard: 220</td>
+</tr>
+<tr>
+<td>Water_Damage_Ticks</td>
+<td>脱水致死速度（值越低越快死）</td>
+<td>默认: 20</td>
+</tr>
+<tr>
+<td>Virus_Default</td>
+<td>初始免疫力 [0~100]</td>
+<td>默认: 100</td>
+</tr>
+<tr>
+<td>Virus_Infect</td>
+<td>免疫力低于此值开始持续下降</td>
+<td>默认: 50</td>
+</tr>
+<tr>
+<td>Virus_Use_Ticks</td>
+<td>免疫力消耗速度（值越低越快）</td>
+<td>默认: 125</td>
+</tr>
+<tr>
+<td>Virus_Damage_Ticks</td>
+<td>零免疫力致死速度（值越低越快死）</td>
+<td>默认: 25</td>
+</tr>
+<tr>
+<td>Leg_Regen_Ticks</td>
+<td>断腿自动恢复速度（值越低越快） 取决于 Can_Fix_Legs</td>
+<td>默认: 750</td>
+</tr>
+<tr>
+<td>Bleed_Damage_Ticks</td>
+<td>流血伤害间隔（值越低越快死）</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Bleed_Regen_Ticks</td>
+<td>流血自动恢复速度（值越低越快） 取决于 Can_Stop_Bleeding</td>
+<td>默认: 750</td>
+</tr>
+<tr>
+<td>Armor_Multiplier</td>
+<td>玩家所受伤害倍率 如 0.5 表示伤害减半</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Experience_Multiplier</td>
+<td>所有活动经验获取倍率</td>
+<td>Easy: 1.5 Normal: 1 Hard: 1.5</td>
+</tr>
+<tr>
+<td>Detect_Radius_Multiplier</td>
+<td>被僵尸 / 动物侦测的半径倍率</td>
+<td>Easy: 0.5 Normal: 1 Hard: 1.25</td>
+</tr>
+<tr>
+<td>Ray_Aggressor_Distance</td>
+<td>攻击判定距离 如子弹经过此距离内视为攻击者</td>
+<td>默认: 8</td>
+</tr>
+<tr>
+<td>Lose_Skills_PvP</td>
+<td>PvP 死亡时保留技能比例 [0~1]</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Lose_Skills_PvE</td>
+<td>PvE 死亡时保留技能比例 [0~1]</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Lose_Skill_Levels_PvP</td>
+<td>PvP 死亡时扣除技能等级数</td>
+<td>Easy: 0 Normal: 1 Hard: 2</td>
+</tr>
+<tr>
+<td>Lose_Skill_Levels_PvE</td>
+<td>PvE 死亡时扣除技能等级数</td>
+<td>Easy: 0 Normal: 1 Hard: 2</td>
+</tr>
+<tr>
+<td>Lose_Experience_PvP</td>
+<td>PvP 死亡时保留经验比例 [0~1]</td>
+<td>默认: 0.5</td>
+</tr>
+<tr>
+<td>Lose_Experience_PvE</td>
+<td>PvE 死亡时保留经验比例 [0~1]</td>
+<td>默认: 0.5</td>
+</tr>
+<tr>
+<td>Skill_Cost_Multiplier</td>
+<td>技能购买 / 升级经验花费倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Lose_Items_PvP</td>
+<td>PvP 死亡时每个物品掉落概率 [0~1]</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Lose_Items_PvE</td>
+<td>PvE 死亡时每个物品掉落概率 [0~1]</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Lose_Clothes_PvP</td>
+<td>PvP 死亡时是否掉落所有衣物</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Lose_Clothes_PvE</td>
+<td>PvE 死亡时是否掉落所有衣物</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Lose_Weapons_PvP</td>
+<td>PvP 死亡时是否掉落主副武器</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Lose_Weapons_PvE</td>
+<td>PvE 死亡时是否掉落主副武器</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Can_Hurt_Legs</td>
+<td>跌落是否受伤 false 时无跌落伤害</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Can_Break_Legs</td>
+<td>跌落是否可断腿</td>
+<td>Easy: False Normal: True Hard: True</td>
+</tr>
+<tr>
+<td>Can_Fix_Legs</td>
+<td>断腿是否可自动恢复</td>
+<td>Easy: True Normal: True Hard: False</td>
+</tr>
+<tr>
+<td>Can_Start_Bleeding</td>
+<td>受伤是否可导致流血</td>
+<td>Easy: False Normal: True Hard: True</td>
+</tr>
+<tr>
+<td>Can_Stop_Bleeding</td>
+<td>流血是否可自动恢复</td>
+<td>Easy: True Normal: True Hard: False</td>
+</tr>
+<tr>
+<td>Spawn_With_Max_Skills</td>
+<td>出生时所有技能满级</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Spawn_With_Stamina_Skills</td>
+<td>出生时体力相关技能满级 (有氧/潜水/锻炼/跑酷)</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Skillset_Reduces_Skill_Cost</td>
+<td>专精相关技能花费减半</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Skillset_Prevents_Skill_Loss</td>
+<td>专精相关技能死亡不掉级</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Prevent_Level_Skill_Overrides</td>
+<td>阻止等级修改技能初始等级/花费/最大等级</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Allow_Instakill_Headshots</td>
+<td>狙击枪爆头是否无视护甲</td>
+<td>Easy: False Normal: False Hard: True</td>
+</tr>
+<tr>
+<td>Allow_Per_Character_Saves</td>
+<td>每个角色位是否有独立存档</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Enable_Terrain_Color_Kick</td>
+<td>皮肤颜色与地形颜色相近时踢出</td>
+<td>默认: True</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 十一、Objects — 世界物体设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Binary_State_Reset_Multiplier</td>
+<td>可交互物（如冰箱）自动关闭时间倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Fuel_Reset_Multiplier</td>
+<td>燃料源自动部分补充时间倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Water_Reset_Multiplier</td>
+<td>水源自动部分补充时间倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Resource_Reset_Multiplier</td>
+<td>树木/岩石/灌木重生时间倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Resource_Drops_Multiplier</td>
+<td>资源（树 / 石）掉落数量倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Rubble_Reset_Multiplier</td>
+<td>可破坏物（如围栏）自动修复时间倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Allow_Holiday_Drops</td>
+<td>节日物品是否可掉落特殊物品 如圣诞礼物是否包含枪支</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Items_Obstruct_Tree_Respawns</td>
+<td>树桩上的路障是否阻止树木重生</td>
+<td>默认: True</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 十二、Events — 事件设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Rain_Frequency_Min</td>
+<td>传统雨天最小间隔（游戏天数）</td>
+<td>默认: 2.3</td>
+</tr>
+<tr>
+<td>Rain_Frequency_Max</td>
+<td>传统雨天最大间隔（游戏天数）</td>
+<td>默认: 5.6</td>
+</tr>
+<tr>
+<td>Rain_Duration_Min</td>
+<td>传统雨天最短持续（游戏天数） 0 关闭传统雨天</td>
+<td>默认: 0.05</td>
+</tr>
+<tr>
+<td>Rain_Duration_Max</td>
+<td>传统雨天最长持续（游戏天数） 0 关闭传统雨天</td>
+<td>默认: 0.15</td>
+</tr>
+<tr>
+<td>Snow_Frequency_Min</td>
+<td>传统雪天最小间隔（游戏天数）</td>
+<td>默认: 1.3</td>
+</tr>
+<tr>
+<td>Snow_Frequency_Max</td>
+<td>传统雪天最大间隔（游戏天数）</td>
+<td>默认: 4.6</td>
+</tr>
+<tr>
+<td>Snow_Duration_Min</td>
+<td>传统雪天最短持续（游戏天数） 0 关闭传统雪天</td>
+<td>默认: 0.2</td>
+</tr>
+<tr>
+<td>Snow_Duration_Max</td>
+<td>传统雪天最长持续（游戏天数） 0 关闭传统雪天</td>
+<td>默认: 0.5</td>
+</tr>
+<tr>
+<td>Weather_Frequency_Multiplier</td>
+<td>新版天气频率倍率 值越低越频繁（命名有误，抱歉！）</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Weather_Duration_Multiplier</td>
+<td>新版天气持续时间倍率 0 完全关闭天气</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Airdrop_Frequency_Min</td>
+<td>空投最小间隔（游戏天数） 取决于 Use_Airdrops</td>
+<td>默认: 0.8</td>
+</tr>
+<tr>
+<td>Airdrop_Frequency_Max</td>
+<td>空投最大间隔（游戏天数）</td>
+<td>默认: 6.5</td>
+</tr>
+<tr>
+<td>Airdrop_Speed</td>
+<td>空投飞机飞行速度（米 / 秒） 值越低玩家反应时间越多</td>
+<td>默认: 128</td>
+</tr>
+<tr>
+<td>Airdrop_Force</td>
+<td>空投包裹向上力 值越高落地越慢</td>
+<td>默认: 9.5</td>
+</tr>
+<tr>
+<td>Arena_Min_Players</td>
+<td>竞技场最少队伍数</td>
+<td>默认: 2</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Damage</td>
+<td>竞技场圈外基础伤害 / 秒</td>
+<td>默认: 9</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Extra_Damage_Per_Second</td>
+<td>竞技场圈外累加伤害 / 秒</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Arena_Clear_Timer</td>
+<td>匹配就绪到传送进入的等待时间（秒）</td>
+<td>默认: 5</td>
+</tr>
+<tr>
+<td>Arena_Finale_Timer</td>
+<td>宣布胜者到重启的等待时间（秒）</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Arena_Restart_Timer</td>
+<td>中场休息时间（秒）</td>
+<td>默认: 15</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Delay_Timer</td>
+<td>首圈开始收缩延迟（秒）</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Pause_Timer</td>
+<td>圈收缩完成后暂停时间（秒）</td>
+<td>默认: 5</td>
+</tr>
+<tr>
+<td>Use_Airdrops</td>
+<td>是否启用空投飞机</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Arena_Use_Compactor_Pause</td>
+<td>竞技场是否使用多圈模式 false 则圈始终向中心收缩</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Speed_Tiny</td>
+<td>Tiny 地图缩圈速度（米 / 秒）</td>
+<td>默认: 0.5</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Speed_Small</td>
+<td>Small 地图缩圈速度（米 / 秒）</td>
+<td>默认: 1.5</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Speed_Medium</td>
+<td>Medium 地图缩圈速度（米 / 秒）</td>
+<td>默认: 3</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Speed_Large</td>
+<td>Large 地图缩圈速度（米 / 秒）</td>
+<td>默认: 4.5</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Speed_Insane</td>
+<td>Insane 地图缩圈速度（米 / 秒）</td>
+<td>默认: 6</td>
+</tr>
+<tr>
+<td>Arena_Compactor_Shrink_Factor</td>
+<td>缩圈后保留半径比例 [0~1] 取决于 Arena_Use_Compactor_Pause</td>
+<td>默认: 0.5</td>
+</tr>
+</tbody></table>
+<p><em><strong>* 十三、Gameplay — 游戏玩法设置 *</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>* 配置选项 *</strong></em></th>
+<th><em><strong>* 说明 *</strong></em></th>
+<th><em><strong>* 默认值 / 难度差异 *</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Repair_Level_Max</td>
+<td>可修理的最高技能等级 超过此等级的蓝图无法制作</td>
+<td>默认: 3</td>
+</tr>
+<tr>
+<td>Hitmarkers</td>
+<td>是否显示命中标记</td>
+<td>Easy: True Normal: True Hard: False</td>
+</tr>
+<tr>
+<td>Crosshair</td>
+<td>持枪时是否显示准星</td>
+<td>Easy: True Normal: True Hard: False</td>
+</tr>
+<tr>
+<td>Ballistics</td>
+<td>子弹是否受重力和飞行时间影响</td>
+<td>Easy: False Normal: True Hard: True</td>
+</tr>
+<tr>
+<td>Chart</td>
+<td>是否永久拥有纸地图（无道具时也可用）</td>
+<td>Easy: True Normal: False Hard: False</td>
+</tr>
+<tr>
+<td>Satellite</td>
+<td>是否永久拥有 GPS 地图（无道具时也可用）</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Compass</td>
+<td>是否永久拥有指南针 HUD（无道具时也可用）</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Group_Map</td>
+<td>地图上是否显示队友</td>
+<td>Easy: True Normal: True Hard: False</td>
+</tr>
+<tr>
+<td>Group_HUD</td>
+<td>队友名字是否穿墙显示</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Group_Player_List</td>
+<td>玩家列表是否显示组队关系</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Static_Groups</td>
+<td>是否启用 Steam 战队 / 群组作为游戏内队伍</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Dynamic_Groups</td>
+<td>是否允许创建游戏内动态队伍</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Lobby_Groups</td>
+<td>是否允许 Steam 大厅自动创建游戏内队伍 需要 Allow_Dynamic_Groups 也启用</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Shoulder_Camera</td>
+<td>第三人称是否使用越肩视角 false 则居中</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Can_Suicide</td>
+<td>是否允许从暂停菜单自杀</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Friendly_Fire</td>
+<td>队伍内是否允许友军伤害</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Bypass_Buildable_Mobility</td>
+<td>是否允许在车上放置哨塔和床</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Bypass_No_Building_Zones</td>
+<td>是否可在禁建区建造</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Bypass_Building_In_Safezones</td>
+<td>是否可在安全区建造</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Allow_Holidays</td>
+<td>是否加载节日内容 (Halloween / Christmas)</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Freeform_Buildables</td>
+<td>是否允许自由摆放路障</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Allow_Freeform_Buildables_On_Vehicles</td>
+<td>是否允许车上自由摆放路障</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Enable_Damage_Flinch</td>
+<td>受击时准星是否偏移</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Enable_Explosion_Camera_Shake</td>
+<td>爆炸时镜头是否震动 玩家可在选项中降低</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Enable_Workstation_Requirements</td>
+<td>制作是否需要附近有工作站 false 仅需热源</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Disable_Motion_Sickness_Options</td>
+<td>是否强制忽略客户端晕动症选项</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Disable_Foliage_Off</td>
+<td>是否强制最低植被密度为 Low</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Use_2D_Scope_Overlay</td>
+<td>瞄准时是否用 2D 叠加代替双渲染瞄准镜</td>
+<td>默认: False</td>
+</tr>
+<tr>
+<td>Enable_Fishing_Catch_Challenge</td>
+<td>钓鱼是否需要完成捕获挑战</td>
+<td>默认: True</td>
+</tr>
+<tr>
+<td>Timer_Exit</td>
+<td>通过暂停菜单离开服务器等待时间（秒）</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Timer_Respawn</td>
+<td>死亡后重生等待时间（秒）</td>
+<td>默认: 10</td>
+</tr>
+<tr>
+<td>Timer_Home</td>
+<td>死亡后床重生等待时间（秒）</td>
+<td>默认: 30</td>
+</tr>
+<tr>
+<td>Timer_Leave_Group</td>
+<td>离开动态队伍等待时间（秒） 给队友反应时间</td>
+<td>默认: 30</td>
+</tr>
+<tr>
+<td>Max_Group_Members</td>
+<td>动态队伍最大邀请人数 0 表示无限制</td>
+<td>默认: 0</td>
+</tr>
+<tr>
+<td>Explosion_Launch_Speed_Multiplier</td>
+<td>爆炸击飞速度倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>AirStrafing_Acceleration_Multiplier</td>
+<td>空中转向加速倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>AirStrafing_Deceleration_Multiplier</td>
+<td>空中减速倍率 超过行走速度时生效</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>FirstPerson_RecoilMultiplier</td>
+<td>第一人称后坐力倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>FirstPerson_AimingRecoilMultiplier</td>
+<td>第一人称瞄准时后坐力倍率</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>FirstPerson_AimingZoomRecoilReduction</td>
+<td>第一人称开镜后坐力减免 与缩放级别反比</td>
+<td>Easy: 0.25 Normal: 0 Hard: 0</td>
+</tr>
+<tr>
+<td>ThirdPerson_RecoilMultiplier</td>
+<td>第三人称后坐力倍率</td>
+<td>Easy: 1 Normal: 2 Hard: 2</td>
+</tr>
+<tr>
+<td>ThirdPerson_SpreadMultiplier</td>
+<td>第三人称子弹散布倍率</td>
+<td>Easy: 1 Normal: 2 Hard: 2</td>
+</tr>
+<tr>
+<td>Viewmodel_AimingJumpLandMultiplier</td>
+<td>第一人称跳跃 / 落地手臂晃动倍率 [0~1]</td>
+<td>默认: 1</td>
+</tr>
+<tr>
+<td>Viewmodel_AimingMisalignmentMultiplier</td>
+<td>第一人称瞄准手臂偏移倍率 [0~1]</td>
+<td>Easy: 0.2 Normal: 0.5 Hard: 1</td>
+</tr>
+<tr>
+<td>Min_Fishing_Bite_Interval</td>
+<td>鱼上钩最短时间</td>
+<td>Easy: 35 Normal: 48 Hard: 48</td>
+</tr>
+<tr>
+<td>Max_Fishing_Bite_Interval</td>
+<td>鱼上钩最长时间</td>
+<td>Easy: 48 Normal: 60 Hard: 60</td>
+</tr>
+<tr>
+<td>Fishing_MaxStrength_Bite_Interval_Multiplier</td>
+<td>满力抛竿时咬钩间隔倍率</td>
+<td>默认: 0.3</td>
+</tr>
+</tbody></table>
+<p> 以上就是相关配置信息，这里再给出一些服务器命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save /保存服务器</span><br><span class="line">shutdown /关闭服务器</span><br><span class="line">admin xxx /给予xxx管理员权限</span><br></pre></td></tr></tbody></table></figure>
+
+<p>记得保存服务器和关闭服务器，不建议直接点叉号关闭服务器，admin 要现在 commands 中设置为允许作弊，这样有管理员权限的玩家在服务器中就可以作弊了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://hot233.github.io">Hot233</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://hot233.github.io/2026/05/27/Unturned%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">https://hot233.github.io/2026/05/27/Unturned%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://hot233.github.io" target="_blank">Hot233's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Unturned/">Unturned</a><a class="post-meta__tags" href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/">游戏服务器</a><a class="post-meta__tags" href="/tags/%E8%81%94%E6%9C%BA/">联机</a><a class="post-meta__tags" href="/tags/Steam/">Steam</a></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/05/13/5.9%E7%AC%94%E8%AE%B0/" title="5.9 笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">5.9 笔记</div></div><div class="info-2"><div class="info-item-1">5.9 笔记假设以农大为例子的话，我首先的想法是从官网上找到 domain:fafu.edu.cn 之后使用 subfinder 快速枚举主流媒体中的子域名  git.fafu.edu.cn（代码仓库） webvpn.fafu.edu.cn（VPN，内网入口） vpn.fafu.edu.cn（VPN） auth.fafu.edu.cn（统一身份认证） login.fafu.edu.cn（登录入口） ehall.fafu.edu.cn（网上办事大厅） jwc.fafu.edu.cn（教务处核心） jwgl.fafu.edu.cn（教务管理） stu.fafu.edu.cn（学生系统） mail.fafu.edu.cn（邮件系统） oa.fafu.edu.cn / oanew.fafu.edu.cn（OA 办公） lib.fafu.edu.cn（图书馆系统） service.fafu.edu.cn my.fafu.edu.cn exam.fafu.edu.cn（考试系统） yjsy.fafu.edu.cn（研究生系统） yjsxk.fafu.edu.cn（研究生选课） ecard.f...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/111.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Hot233</div><div class="author-info-description">技术博客，记录学习与成长</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Hot233"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Hot233" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">技术博客，记录学习与成长</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">一、服务器的搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E6%84%8F%E5%B7%A5%E5%9D%8A"><span class="toc-number">2.</span> <span class="toc-text">二、创意工坊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BF%AE%E6%94%B9config"><span class="toc-number">3.</span> <span class="toc-text">三、修改 config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Browser-%E2%80%94-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%97%E8%A1%A8%E6%98%BE%E7%A4%BA"><span class="toc-number">3.1.</span> <span class="toc-text">* 一、Browser — 服务器列表显示 *</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/27/Unturned%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/" title="Unturned 本地服务器搭建">Unturned 本地服务器搭建</a><time datetime="2026-05-26T16:00:00.000Z" title="发表于 2026-05-27 00:00:00">2026-05-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/13/5.9%E7%AC%94%E8%AE%B0/" title="5.9 笔记">5.9 笔记</a><time datetime="2026-05-12T18:00:00.000Z" title="发表于 2026-05-13 02:00:00">2026-05-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/13/hello-world/" title="Hello World">Hello World</a><time datetime="2026-05-12T16:00:00.000Z" title="发表于 2026-05-13 00:00:00">2026-05-13</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Hot233</span></div><div class="footer_custom_text"><div id="workboard"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/runtime.js"></script><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<style>
+.aplayer.aplayer-fixed.aplayer-mini { left: 20px !important; right: auto !important; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #bbb; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #888; }
+::selection { background: #ff6b81; color: #fff; }
+::-moz-selection { background: #ff6b81; color: #fff; }
+.post-block { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.recent-post-info:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.5/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({
+  "model": {
+    "jsonPath": "https://cdn.jsdelivr.net/npm/live2d-widget-model-miku@1.0.5/assets/miku.model.json",
+    "scale": 1
+  },
+  "display": { "position": "right", "width": 150, "height": 300, "hOffset": 0, "vOffset": -20 },
+  "mobile": { "show": true, "scale": 0.5 },
+  "react": { "opacityDefault": 0.7, "opacityOnHover": 0.2 }
+});
+</script>
+<script>
+(function() {
+  var orig = document.title;
+  var away = '\u{1F494} 你快回来～';
+  var back = '❤ 欢迎回来～';
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) { document.title = away; }
+    else { document.title = back; setTimeout(function(){ document.title = orig; }, 1500); }
+  });
+})();
+</script>
+<canvas id="sakura-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:99998;"></canvas>
+<script>
+(function() {
+  var canvas = document.getElementById('sakura-canvas');
+  var ctx = canvas.getContext('2d');
+  var petals = [];
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  for (var i = 0; i < 25; i++) {
+    petals.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 8 + 4,
+      speed: Math.random() * 1 + 0.3,
+      wind: Math.random() * 0.5 - 0.25,
+      opacity: Math.random() * 0.6 + 0.2,
+      color: Math.random() > 0.5 ? '#ffb3c6' : '#ffd1dc'
+    });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    petals.forEach(function(p) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      p.y += p.speed;
+      p.x += p.wind;
+      if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
+      if (p.x > canvas.width + 20) { p.x = -20; }
+      if (p.x < -20) { p.x = canvas.width + 20; }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+<div id="aplayer"></div>
+<script>
+fetch('https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9715336898')
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      mini: true,
+      autoplay: false,
+      volume: 0.5,
+      order: 'random',
+      audio: data.map(function(song) {
+        return { name: song.title, artist: song.author, url: song.url, cover: song.pic, lrc: song.lrc };
+      })
+    });
+  })
+  .catch(function(err) { console.log('Music player load failed:', err); });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+<script>
+const initPangu = () => { if (typeof pangu !== 'undefined') { pangu.spacingPage(); } };
+document.addEventListener('DOMContentLoaded', initPangu);
+document.addEventListener('pjax:complete', initPangu);
+</script>
+<script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
